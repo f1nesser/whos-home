@@ -1,1 +1,12 @@
-/img
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+
+# images folder
+img/
+
+# virtual environment
+.venv

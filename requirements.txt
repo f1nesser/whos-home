@@ -1,0 +1,4 @@
+lgpio
+imageio
+opencv-python
+django
