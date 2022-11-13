@@ -11,6 +11,7 @@ ANIM_LEN = 7
 h = lgpio.gpiochip_open(0)
 lgpio.gpio_claim_input(h, MOTION_SENSOR)
 
+print('READY')
 while True:
     motion = lgpio.gpio_read(h, MOTION_SENSOR)
     if motion:
