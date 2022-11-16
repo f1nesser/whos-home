@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import DoorEvent, Person
 
-# Register your models here.
+admin.site.register(DoorEvent)
+admin.site.register(Person)

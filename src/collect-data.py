@@ -16,7 +16,7 @@ while True:
     motion = lgpio.gpio_read(h, MOTION_SENSOR)
     if motion:
         frames = []
-        cur_datetime = datetime.now().strftime('%b,%d,%a,%H:%M:%S')
+        cur_datetime = datetime.now().isoformat()
         print('capturing')
         for i in range(ANIM_LEN):
             cap = cv2.VideoCapture(0)
@@ -25,7 +25,7 @@ while True:
                 frames.append(frame)
             cap.release()
         print(f'saving {cur_datetime}.gif')
-        with imageio.get_writer(f'../img/{cur_datetime}.gif', mode = 'I') as writer:
+        with imageio.get_writer(f'./whos_home/media/{cur_datetime}.gif', mode = 'I') as writer:
             for brg_frame in frames:
                 rgb_frame = brg_frame[:, :, ::-1]
                 writer.append_data(rgb_frame)

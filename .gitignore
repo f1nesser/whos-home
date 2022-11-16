@@ -6,7 +6,8 @@ __pycache__
 db.sqlite3
 
 # images folder
-img/
+media/
+archive/
 
 # virtual environment
 .venv

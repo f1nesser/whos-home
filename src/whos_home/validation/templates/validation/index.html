@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Validation</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+	<h1> Data Validation </h1>
+
+		<img src="{{ MEDIA_URL }}{{ file }}">
+		<h3> {{ file }} </h3>
+		<form action="/validation/validate" method="post">
+		{% csrf_token %}
+		<legend> who's there? </legend>
+		<fieldset>
+		{% if people %}
+			{% for person in people %}
+			<input type="radio" name="choice" id="{{ person.name }}{{ forloop.counter }}" value="{{ person }}">
+			<label for="{{ person.name }}{{ forloop.counter }}"> {{ person.name }} </label>
+			{% endfor %}
+		{% else %}
+			<p>nobody in database, add people</p>
+		{% endif %}
+		</fieldset>
+
+		<legend> what they doing </legend>
+		<fieldset>
+			<input type="radio" name="action" id="enter" value="EN">
+			<label for="enter"> Entering </label>
+			<input type="radio" name="action" id="leave" value="LE">
+			<label for="leave"> Leaving </label>
+		</fieldset>
+			<input type="hidden" name="file_name" value={{ file }}>
+			<input type="submit" value="Submit">
+		</form>
+
+		<form action="/validation/new_user" method="post">
+		{% csrf_token %}
+		<fieldset>
+			<input type="text" name="new_person" id="new_person">
+			<label for="new_person"> add person </label>
+			<input type="submit" value="Submit">
+		</fieldset>
+		</form>
+
+  </body>
+</html>

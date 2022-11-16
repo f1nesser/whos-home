@@ -10,7 +10,6 @@ class Person(models.Model):
 
 class DoorEvent(models.Model):
     date_time = models.DateTimeField('datetime door opened')
-    day_of_the_week = models.IntegerField(default=-1)
     whos_there = models.ForeignKey(Person, on_delete=models.CASCADE)
     ACTION_CHOICES = [('EN', 'entering'), ('LE', 'leaving')]
     action = models.CharField(max_length=2, choices=ACTION_CHOICES)
